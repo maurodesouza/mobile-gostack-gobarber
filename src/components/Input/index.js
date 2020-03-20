@@ -4,9 +4,9 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { Container, TInput } from './styles';
 
-function Input({ styles, icon, ...rest }, ref) {
+function Input({ style, icon, ...rest }, ref) {
   return (
-    <Container style={styles}>
+    <Container style={style}>
       {icon && <Icon name={icon} size={20} color="rgba(255, 255, 255, 0.6)" />}
       <TInput {...rest} ref={ref} />
     </Container>
@@ -14,7 +14,7 @@ function Input({ styles, icon, ...rest }, ref) {
 }
 
 Input.propTypes = {
-  styles: PropTypes.oneOf([
+  style: PropTypes.oneOf([
     PropTypes.instanceOf(Object),
     PropTypes.instanceOf(Array),
   ]),
@@ -22,7 +22,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  styles: {},
+  style: {},
   icon: null,
 };
 
