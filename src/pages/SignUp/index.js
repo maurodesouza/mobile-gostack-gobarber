@@ -1,8 +1,14 @@
 import React from 'react';
 import { Text } from 'react-native';
 
+import Background from '~/components/Background';
+
 // import { Container } from './styles';
 
 export default function SignUp() {
-  return <Text>Hmm .. Sign Up ?</Text>;
+  return (
+    <Background>
+      <Text>Hmm ... Sign Up</Text>
+    </Background>
+  );
 }
