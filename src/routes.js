@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -11,8 +12,59 @@ import SignUp from '~/pages/SignUp';
 import Dashboard from '~/pages/Dashboard';
 import Profile from '~/pages/Profile';
 
+import Confirm from '~/pages/New/Confirm';
+import SelectProvider from '~/pages/New/SelectProvider';
+import SelectTimeDate from '~/pages/New/SelectTimeDate';
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
+const newStack = ({ navigation }) => (
+  <Stack.Navigator
+    screenOptions={{
+      headerTransparent: true,
+      headerTintColor: '#fff',
+      headerLeftContainerStyle: { marginLeft: 20 },
+    }}
+  >
+    <Stack.Screen
+      name="SelectProvider"
+      component={SelectProvider}
+      options={{
+        title: 'Selecione o prestador',
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+            <Icon name="chevron-left" size={20} color="#fff" />
+          </TouchableOpacity>
+        ),
+      }}
+    />
+    <Stack.Screen
+      name="SelectTimeDate"
+      component={SelectTimeDate}
+      options={{
+        title: 'Selecione o horário',
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Icon name="chevron-left" size={20} color="#fff" />
+          </TouchableOpacity>
+        ),
+      }}
+    />
+    <Stack.Screen
+      name="Confirm"
+      component={Confirm}
+      options={{
+        title: 'Comfirmar agendamento',
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Icon name="chevron-left" size={20} color="#fff" />
+          </TouchableOpacity>
+        ),
+      }}
+    />
+  </Stack.Navigator>
+);
 
 export default (signed = false) => {
   return !signed ? (
@@ -42,6 +94,17 @@ export default (signed = false) => {
           tabBarLabel: 'Agendamentos',
           tabBarIcon: ({ color }) => (
             <Icon name="event" size={20} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="New"
+        component={newStack}
+        options={{
+          tabBarVisible: false,
+          tabBarLabel: 'Agendar',
+          tabBarIcon: ({ color }) => (
+            <Icon name="add-circle-outline" size={20} color={color} />
           ),
         }}
       />
