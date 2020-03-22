@@ -4,6 +4,7 @@ import { Keyboard } from 'react-native';
 
 import Background from '~/components/Background';
 import { updateProfileRequest } from '~/store/modules/user/actions';
+import { signOut } from '~/store/modules/auth/actions';
 
 import {
   Container,
@@ -12,6 +13,7 @@ import {
   Form,
   FormInput,
   SubmitButton,
+  LogoutButton,
 } from './styles';
 
 export default function Profile() {
@@ -46,6 +48,8 @@ export default function Profile() {
     setConfirmPassword('');
     Keyboard.dismiss();
   };
+
+  const handleLogout = () => dispatch(signOut());
 
   return (
     <Background>
@@ -109,7 +113,7 @@ export default function Profile() {
           <FormInput
             icon="lock-outline"
             secureTextEntry
-            placeholder="Sua senha"
+            placeholder="Confirme sua nova senha"
             autoCapitalize="none"
             blurOnSubmit={false}
             returnKeyType="send"
@@ -122,6 +126,8 @@ export default function Profile() {
           <SubmitButton onPress={handleSubmit} loading={loading}>
             Atualizar perfil
           </SubmitButton>
+
+          <LogoutButton onPress={handleLogout}>Sair do GoBarber</LogoutButton>
         </Form>
       </Container>
     </Background>
