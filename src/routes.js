@@ -25,6 +25,7 @@ const newStack = ({ navigation }) => (
       headerTransparent: true,
       headerTintColor: '#fff',
       headerLeftContainerStyle: { marginLeft: 20 },
+      headerTitleAlign: 'center',
     }}
   >
     <Stack.Screen
