@@ -58,7 +58,7 @@ const newStack = ({ navigation }) => (
       name="Confirm"
       component={Confirm}
       options={{
-        title: 'Comfirmar agendamento',
+        title: 'Confirmar agendamento',
         headerLeft: () => (
           <TouchableOpacity
             onPress={() => navigation.navigate('SelectTimeDate')}
@@ -106,6 +106,7 @@ export default (signed = false) => {
         name="New"
         component={newStack}
         options={{
+          unmountOnBlur: true,
           tabBarVisible: false,
           tabBarLabel: 'Agendar',
           tabBarIcon: ({ color }) => (
