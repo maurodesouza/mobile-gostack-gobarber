@@ -46,7 +46,9 @@ const newStack = ({ navigation }) => (
       options={{
         title: 'Selecione o horário',
         headerLeft: () => (
-          <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('SelectProvider')}
+          >
             <Icon name="chevron-left" size={20} color="#fff" />
           </TouchableOpacity>
         ),
@@ -58,7 +60,9 @@ const newStack = ({ navigation }) => (
       options={{
         title: 'Comfirmar agendamento',
         headerLeft: () => (
-          <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('SelectTimeDate')}
+          >
             <Icon name="chevron-left" size={20} color="#fff" />
           </TouchableOpacity>
         ),
